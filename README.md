@@ -1,7 +1,5 @@
 # sql-format
-格式化SQL语句，避免SQL拼接，防止SQL注入
-
-功能: SQL语句格式化库
+功能: SQL语句格式化库，避免SQL拼接，防止SQL注入
 
 1. 使用方法参见demo.cpp
 2. 使用"?"问号作为参数的占位符
@@ -13,8 +11,6 @@
 5. 此库只包含头文件，正常使用包含头文件sql_format/sf_formatter.h 即可
 
 
-
-使用指南:
 
 MYSQL mysql;
 long uid = 1024; // 用户id 
