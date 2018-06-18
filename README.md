@@ -15,44 +15,48 @@ sql-format
 
 
 #### 常用使用方法：
-MYSQL mysql;
+MYSQL mysql;</br>
 long uid = 1024; // 用户id </br>
-std::string product = "book"; // 产品名称
-const char* remark = "newest"; // 备注关键字
-int startIndex = 10; // 分页开始
-int pageSize = 10; // 分页大小
+std::string product = "book"; // 产品名称</br>
+const char* remark = "newest"; // 备注关键字</br>
+int startIndex = 10; // 分页开始</br>
+int pageSize = 10; // 分页大小</br>
+
 
 #### 基本用法
-std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE uid=? AND remark=? LIMIT ?,?", uid, remark, startIndex, pageSize);
+std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE uid=? AND remark=? LIMIT ?,?", uid, remark, startIndex, pageSize);</br>
 // SELECT * FROM t_order WHERE uid=1024 AND remark='newest' LIMIT 10,10
 
+
 #### LIKE支持 
-std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE remark LIKE ?", like_lr(remark));
+std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE remark LIKE ?", like_lr(remark));</br>
 // SELECT * FROM t_order WHERE remark LIKE '%newest%' 
 
+
 #### 范围支持 
-std::list<std::string> productList = {"book", "iphone", "cup"};
-std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE product IN ?", in_range(productList));
+std::list<std::string> productList = {"book", "iphone", "cup"};</br>
+std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE product IN ?", in_range(productList));</br>
 // SELECT * FROM t_order WHERE product IN ('book','iphone','cup') 
 
+
 #### 复杂逻辑 
-bool searchRemark = false; // 是否是搜索备注
-bool paging = true; // 是否分页
+bool searchRemark = false; // 是否是搜索备注</br>
+bool paging = true; // 是否分页</br>
 
-std::string sql = "SELECT * FROM t_order WHERE uid=? ";
-SqlFormat::Formatter formatter(uid);
+std::string sql = "SELECT * FROM t_order WHERE uid=? ";</br>
+SqlFormat::Formatter formatter(uid);</br>
 
-if (searchRemark)
+if (searchRemark)</br>
+{</br>
+    sql += "AND remark= ";</br>
+    formatter.append(remark);</br>
+}</br>
+
+if (paging)</br>
 {
-    sql += "AND remark= ";
-    formatter.append(remark);
-}
+    sql += "LIMIT ?,? ";</br>
+    formatter.append(startIndex, pageSize);</br>
+}</br>
 
-if (paging)
-{
-    sql += "LIMIT ?,? ";
-    formatter.append(startIndex, pageSize);
-}
-
-std::string sql = formatter.format(mysql, sql);
-// SELECT * FROM t_order WHERE uid=1024 LIMIT 10,10
+std::string sql = formatter.format(mysql, sql);</br>
+// SELECT * FROM t_order WHERE uid=1024 LIMIT 10,10</br>
