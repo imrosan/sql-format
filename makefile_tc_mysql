@@ -1,0 +1,6 @@
+TARGET    := demo 
+CFLAGS   += -std=c++0x
+
+LIB       += -L/usr/local/mysql/lib/mysql -lmysqlclient
+
+include /usr/local/taf/makefile.taf
