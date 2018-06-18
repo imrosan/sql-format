@@ -20,20 +20,20 @@ const char* remark = "newest"; // 备注关键字
 int startIndex = 10; // 分页开始
 int pageSize = 10; // 分页大小
 
-// 基本用法
+#### 基本用法
 std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE uid=? AND remark=? LIMIT ?,?", uid, remark, startIndex, pageSize);
 // SELECT * FROM t_order WHERE uid=1024 AND remark='newest' LIMIT 10,10
 
-// LIKE支持 
+#### LIKE支持 
 std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE remark LIKE ?", like_lr(remark));
 // SELECT * FROM t_order WHERE remark LIKE '%newest%' 
 
-// 范围支持 
+#### 范围支持 
 std::list<std::string> productList = {"book", "iphone", "cup"};
 std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE product IN ?", in_range(productList));
 // SELECT * FROM t_order WHERE product IN ('book','iphone','cup') 
 
-// 复杂逻辑 
+#### 复杂逻辑 
 bool searchRemark = false; // 是否是搜索备注
 bool paging = true; // 是否分页
 
