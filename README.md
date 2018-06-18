@@ -12,5 +12,5 @@
 
 
 
-MYSQL mysql;
+MYSQL mysql;  
 long uid = 1024;
