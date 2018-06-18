@@ -53,9 +53,9 @@ if (searchRemark)</br>
 }</br>
 
 if (paging)</br>
-{
+{</br>
     sql += "LIMIT ?,? ";</br>
-    formatter.append(startIndex, pageSize);</br>
+   formatter.append(startIndex, pageSize);</br>
 }</br>
 
 std::string sql = formatter.format(mysql, sql);</br>
