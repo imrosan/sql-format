@@ -11,6 +11,10 @@
 
 namespace SqlFormat
 {
+
+template<typename T>
+Detail::DataBase* NewData(const T& t);
+
 namespace Detail
 {
 
