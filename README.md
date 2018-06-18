@@ -48,13 +48,13 @@ SqlFormat::Formatter formatter(uid);</br>
 
 if (searchRemark)</br>
 {</br>
-    sql += "AND remark= ";</br>
-    formatter.append(remark);</br>
+    &nbsp;&nbsp;&nbsp;&nbsp;sql += "AND remark= ";</br>
+    &nbsp;&nbsp;&nbsp;&nbsp;formatter.append(remark);</br>
 }</br>
 
 if (paging)</br>
 {</br>
-    sql += "LIMIT ?,? ";</br>
+    &nbsp;&nbsp;&nbsp;&nbsp;sql += "LIMIT ?,? ";</br>
     &nbsp;&nbsp;&nbsp;&nbsp;formatter.append(startIndex, pageSize);</br>
 }</br>
 
