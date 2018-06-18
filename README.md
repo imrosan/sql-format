@@ -13,8 +13,10 @@ sql-format
 4. 字符串类型支持防御SQL注入, 不过需要在sql_format/sf_escape.h文件中定义的escape函数（里面有几个默认实现可以参考）
 5. 此库只包含头文件，正常使用包含头文件sql_format/sf_formatter.h 即可
 
+
+#### 常用使用方法：
 MYSQL mysql;
-long uid = 1024; // 用户id 
+long uid = 1024; // 用户id </br>
 std::string product = "book"; // 产品名称
 const char* remark = "newest"; // 备注关键字
 int startIndex = 10; // 分页开始
