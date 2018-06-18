@@ -28,6 +28,13 @@ void like_support() // LIKE支持
     std::cout << sql << std::endl; // SELECT * FROM t_order WHERE remark LIKE '%newest%' 
 }
 
+void in_range_support() // 范围支持 
+{
+    std::list<std::string> productList = {"book", "iphone", "cup"};
+    std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE product IN ?", in_range(productList));
+    std::cout << sql << std::endl; // SELECT * FROM t_order WHERE product IN ('book','iphone','cup') 
+}
+
 void complex_logic_support() // 复杂逻辑 
 {
     bool searchRemark = false; // 是否是搜索备注
@@ -51,19 +58,12 @@ void complex_logic_support() // 复杂逻辑
     std::cout << formatter.format(mysql, sql) << std::endl; // SELECT * FROM t_order WHERE uid=1024 LIMIT 10,10
 }
 
-void in_range_support() // 范围支持 
-{
-    std::list<std::string> productList = {"book", "iphone", "cup"};
-    std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE product IN ?", in_range(productList));
-    std::cout << sql << std::endl; // SELECT * FROM t_order WHERE product IN ('book','iphone','cup') 
-}
-
 int main()
 {
     basic_usage();
     like_support();
-    complex_logic_support();
     in_range_support();
+    complex_logic_support();
 
     return 0;
 }
