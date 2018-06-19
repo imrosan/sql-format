@@ -45,7 +45,7 @@ void complex_logic_support() // 复杂逻辑
 
     if (searchRemark)
     {
-        sql += "AND remark= ";
+        sql += "AND remark=? ";
         formatter.append(remark);
     }
 
