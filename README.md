@@ -34,7 +34,7 @@ std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE remark L
 
 
 #### 范围支持 
-std::list<std::string> productList = {"book", "iphone", "cup"};</br>
+std::list&lt;std::string&gt; productList = {"book", "iphone", "cup"};</br>
 std::string sql = SqlFormat::Format(mysql, "SELECT * FROM t_order WHERE product IN ?", in_range(productList));</br>
 // SELECT * FROM t_order WHERE product IN ('book','iphone','cup') 
 
