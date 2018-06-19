@@ -48,7 +48,7 @@ SqlFormat::Formatter formatter(uid);</br>
 
 if (searchRemark)</br>
 {</br>
-    &nbsp;&nbsp;&nbsp;&nbsp;sql += "AND remark= ";</br>
+    &nbsp;&nbsp;&nbsp;&nbsp;sql += "AND remark=? ";</br>
     &nbsp;&nbsp;&nbsp;&nbsp;formatter.append(remark);</br>
 }</br>
 
